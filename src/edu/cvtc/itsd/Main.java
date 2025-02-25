@@ -39,25 +39,21 @@ public class Main {
 
     @Override
     public void insertString(FilterBypass fb, int offset, String stringToAdd, AttributeSet attr)
-        throws BadLocationException
-    {
-      if (fb.getDocument() != null) {
-        super.insertString(fb, offset, stringToAdd, attr);
-      }
-      else {
-        Toolkit.getDefaultToolkit().beep();
+            throws BadLocationException {
+      if (fb.getDocument() != null && stringToAdd.matches("\\d+")) { // Allow only numbers
+        if ((fb.getDocument().getLength() + stringToAdd.length()) <= MAX_LENGTH) { // Enforce max length
+          super.insertString(fb, offset, stringToAdd, attr);
+        }
       }
     }
 
     @Override
     public void replace(FilterBypass fb, int offset, int lengthToDelete, String stringToAdd, AttributeSet attr)
-        throws BadLocationException
-    {
-      if (fb.getDocument() != null) {
-        super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
-      }
-      else {
-        Toolkit.getDefaultToolkit().beep();
+            throws BadLocationException {
+      if (fb.getDocument() != null && stringToAdd.matches("\\d+")) { // Allow only numbers
+        if ((fb.getDocument().getLength() - lengthToDelete + stringToAdd.length()) <= MAX_LENGTH) { // Enforce max length
+          super.replace(fb, offset, lengthToDelete, stringToAdd, attr);
+        }
       }
     }
   }

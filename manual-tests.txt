@@ -61,4 +61,24 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * Should display "Developer" for the user name.
 
+# Module 4: Visibility of system status (Ticket 401 - Restrict Card Field Input)
 
+## Test steps
+1. Build and run CiCo.
+2. Enter "abcd" into the card field.
+3. Enter "1234abcd5678" into the card field.
+
+## Expected results
+* The field should remain empty after step 2.
+* The field should only display "12345678" after step 3 (letters should be ignored).
+
+# Module 4: Match between system and the real world (Ticket 402 - Limit Card Number Length)
+
+## Test steps
+1. Build and run CiCo.
+2. Enter "1234567890" (10-digit card number) into the card field.
+3. Enter "12345678" (8-digit card number) into the card field.
+
+## Expected results
+* The field should only display "12345678" when entering "1234567890".
+* The field should fully accept "12345678" since it is within the limit.
