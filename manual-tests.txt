@@ -82,3 +82,17 @@ Use `./build.sh` to build CiCo and `./run.sh` to run it if using the command lin
 ## Expected results
 * The field should only display "12345678" when entering "1234567890".
 * The field should fully accept "12345678" since it is within the limit.
+
+
+# Module 5: Error prevention (Ticket 502 - Close Application When Window Closes)
+
+## Test steps
+1. Build and run CiCo.
+2. Close the application window by clicking the X button.
+3. Observe the console output and application status.
+
+## Expected results
+* The application should fully terminate when the window is closed.
+* No additional steps should be needed to quit the application.
+* The console should show a 'Clean shutdown' message.
+* The IDE run indicator should stop (play button becomes available again).
